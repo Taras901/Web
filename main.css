@@ -1,6 +1,5 @@
 @import "./animation.css";
-*{
-    margin: 0;
+*{    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
@@ -155,7 +154,6 @@ div a:hover{
 
 .Trending_stories_container { 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
     align-items: center;
     max-width: 1200px;
     margin: 100px auto;
@@ -243,10 +241,11 @@ footer div a {
     text-decoration: none;
 }
 
-@media screen and (max-width:768px) {
-    .header_menu{
+@media screen and (max-width:768px) and (min-width:320px) { 
+    .header_menu {
     display: flex;
     }
+
     header{
         position: fixed;
         left: 0;
@@ -256,6 +255,12 @@ footer div a {
         text-align: center;
     }
 
+body{
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
 
 .div{
     background-color:#7D7987;
@@ -289,5 +294,65 @@ header ul{
     font-size:32px ;
     font-weight: 500;
 }
+
+.hero_container{
+    display:flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    text-align: center;
+}
+.Testimonials_container{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 120px;
 }
 
+.Testimonials_text{
+    margin-top: 10%;
+}
+
+.aaaa{ 
+    display: flex;
+    flex-direction: column;
+}
+
+.aaaa img{
+    width: 50%;
+    height: 150px;
+}
+.Trending_stories_container b p{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.picture1 > img{
+    max-width: 100%;
+}
+
+.picture2 > img{
+    max-width: 100%;
+}
+
+.picture1{
+    max-width: 90%;
+}
+
+.picture2{
+    max-width: 80%;
+    margin: 10px  0 ;
+    padding-bottom: 200px;
+}
+
+body p b{
+    font-size: large;
+}
+
+.Edward_Newgate b{
+    font-weight: 700;
+    padding:50px;
+}
+
+}
