@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 2, name: "Agusta A109", passengers: 6, speed: 310,imageUrl:"img/Linfox_Agusta_A-109.jpg" },
         { id: 3, name: "Robinson R44", passengers: 3, speed: 240,imageUrl:"img/Robinson-R44.jpg"},
         { id: 4, name: "SpAF Aerospatiale AS-332B1", passengers: 24, speed: 315,imageUrl:"img/Aerospatiale_AS-332B1.jpg"}
-
     ];
     const helicopterList = document.getElementById('helicopter-list');
     const form = document.getElementById('helicopterForm');
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>
-            `;
+            `
             helicopterList.insertAdjacentHTML('beforeend', card);
         });
     }
