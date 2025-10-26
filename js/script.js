@@ -105,11 +105,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderHelicopters();
 });
-fetch('http://127.0.0.1:5500/')
-    .then((response) => {
-    return response.json();
-    })
-    .then((data) => {
-    console.log(data);
-    });
-console.log(BLA*3)
