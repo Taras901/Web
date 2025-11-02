@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Bell 429",
+    "passengers": 7,
+    "speed": 287,
+    "imageUrl": "img/bell-429.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Agusta A109",
+    "passengers": 6,
+    "speed": 310,
+    "imageUrl": "img/agusta-109.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Robinson R44",
+    "passengers": 3,
+    "speed": 240,
+    "imageUrl": "img/robinson-r44.jpg"
+  },
+  {
+    "id": 4,
+    "name": "SpAF Aerospatiale AS-332B1",
+    "passengers": 24,
+    "speed": 315,
+    "imageUrl": "img/aerospatiale-as-332.jpg"
+  }
+]
