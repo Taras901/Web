@@ -2,7 +2,6 @@ import chairImg from './assets/chair.jpg';
 import tableImg from './assets/table.jpg';
 import lampImg from './assets/lamp.jpg';
 import sofaImg from './assets/sofa.jpg';
-// Якщо якоїсь картинки немає, закоментуй рядок вище і використай іншу змінну
 
 export const itemsData = [
   {

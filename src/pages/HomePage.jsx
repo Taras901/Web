@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import heroImage from '../assets/hero.jpg';
+import { Link } from 'react-router-dom';
+import { fetchItems } from '../api';
 
-const Container = styled.div`
-  max-width: 1200px; margin: 0 auto; padding: 0 1rem;
-`;
+const Container = styled.div`max-width: 1200px; margin: 0 auto; padding: 0 1rem;`;
 
 const HeroSection = styled.div`
   display: flex; gap: 2rem; margin-bottom: 4rem; margin-top: 2rem;
@@ -12,82 +11,91 @@ const HeroSection = styled.div`
 `;
 
 const HeroImage = styled.div`
-  flex: 1;
-  height: 320px;
-  border-radius: 8px;
-  overflow: hidden;
+  flex: 1; height: 320px; border-radius: 8px; overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  
-  /* Стиль для картинки всередині */
-  img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
+  img { width: 100%; height: 100%; object-fit: cover; }
 `;
 
 const HeroContent = styled.div`
-  flex: 1;
-  display: flex; flex-direction: column; justify-content: center;
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
   h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--dark); }
   p { font-size: 1.1rem; line-height: 1.6; color: var(--medium); }
 `;
 
 const TilesGrid = styled.div`
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem;
+  display: grid; 
+  /* Адаптивна сітка: 3 колонки */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 2rem; margin-bottom: 3rem;
   @media (max-width: 768px) { grid-template-columns: 1fr; }
 `;
 
 const Tile = styled.div`
-  text-align: center;
-  background: #fff; padding: 20px; border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  h3 { margin-bottom: 0.5rem; }
+  text-align: center; background: #fff; padding: 15px; border-radius: 8px;
+  border: 1px solid #e5e7eb; transition: 0.3s;
+  
+  &:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+  
+  img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 15px; }
+  h3 { margin-bottom: 5px; font-size: 1.2rem; }
+  p { color: var(--primary); font-weight: bold; font-size: 1.1rem; }
 `;
 
 const Button = styled.button`
-  background-color: var(--primary); color: white; padding: 12px 32px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; display: block; margin: 0 auto;
+  background-color: var(--primary); color: white; padding: 12px 32px; 
+  border: none; border-radius: 6px; font-weight: bold; cursor: pointer; 
+  display: block; margin: 0 auto 50px auto; transition: 0.2s;
+  
   &:hover { background-color: var(--primary-dark); }
 `;
 
-const ExtraContent = styled.div`
-  margin-top: 3rem; padding: 2rem; background: #e0f2fe; border-radius: 8px; text-align: center;
+const StyledLink = styled(Link)`
+  text-decoration: none; color: inherit;
 `;
 
 const HomePage = () => {
-  const [showMore, setShowMore] = useState(false);
+  const [items, setItems] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    fetchItems().then(data => {
+      setItems(data);
+    });
+  }, []);
+
+  const visibleItems = showAll ? items : items.slice(0, 0
+  );
 
   return (
     <Container>
       <HeroSection>
         <HeroImage>
-          <img src={heroImage} alt="Shop Banner" />
+          <img src="/hero.jpg" alt="Shop Banner" />
         </HeroImage>
-        
         <HeroContent>
-          <h1>Welcome!</h1>
-          <p>Ми пропонуємо найкращі меблі для вашого комфорту.</p>
+          <h1>Welcome to Interior Shop!</h1>
+          <p>Ми пропонуємо найкращі меблі для вашого комфорту. Перегляньте наші популярні товари нижче.</p>
         </HeroContent>
       </HeroSection>
 
+      <h2 style={{marginBottom: '20px'}}>Popular Products</h2>
+
       <TilesGrid>
-        {[1, 2, 3].map(item => (
-          <Tile key={item}>
-            <h3>Tile {item}</h3>
-            <p>Static content here.</p>
-          </Tile>
+        {visibleItems.map(item => (
+          <StyledLink to={`/catalog/${item.id}`} key={item.id}>
+            <Tile>
+              <img src={item.image} alt={item.title} />
+              <h3>{item.title}</h3>
+              <p>${item.price}</p>
+            </Tile>
+          </StyledLink>
         ))}
       </TilesGrid>
 
-      <Button onClick={() => setShowMore(!showMore)}>
-        {showMore ? "Show Less" : "View more"}
+      <Button onClick={() => setShowAll(!showAll)}>
+        {showAll ? "Show Less" : "View More Products"}
       </Button>
 
-      {showMore && (
-        <ExtraContent>
-          <h2>Extra Content Loaded!</h2>
-          <p>This section appears because you clicked the button.</p>
-        </ExtraContent>
-      )}
     </Container>
   );
 };

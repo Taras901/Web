@@ -1,6 +1,36 @@
 {
-    "items": [
-    { "id": 1, "title": "Chair", "category": "Furniture", "price": 45, "image": "https://via.placeholder.com/150", "description": "Desc..." },
-    { "id": 2, "title": "Lamp", "category": "Lighting", "price": 30, "image": "https://via.placeholder.com/150", "description": "Desc..." }
-    ]
+  "items": [
+    {
+      "id": 1,
+      "title": "Awesome Chair",
+      "category": "Furniture",
+      "price": 45,
+      "description": "Дуже зручний стілець для роботи та відпочинку.",
+      "image": "/chair.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Cool Table",
+      "category": "Furniture",
+      "price": 120.5,
+      "description": "Стильний стіл для сучасного інтер'єру.",
+      "image": "/table.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Modern Lamp",
+      "category": "Lighting",
+      "price": 30,
+      "description": "Яскрава лампа для вечірнього читання.",
+      "image": "/lamp.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Soft Sofa",
+      "category": "Furniture",
+      "price": 299.99,
+      "description": "М'який диван для всієї родини.",
+      "image": "/sofa.jpg"
+    }
+  ]
 }

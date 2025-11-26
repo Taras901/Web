@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-:root {
+  :root {
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
     --primary-light: #dbeafe;
@@ -9,28 +9,31 @@ export const GlobalStyles = createGlobalStyle`
     --medium: #6b7280;
     --light: #f3f4f6;
     --white: #ffffff;
-}
+  }
 
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+  }
 
-body {
+  body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--white);
+    
+    /* 👇 ОСЬ ТУТ ЗМІНЮЄМО КОЛІР 👇 */
+    background-color: #ffe4e6; 
+    
     color: var(--medium);
     line-height: 1.5;
-}
+  }
 
-h1, h2, h3, h4 {
+  h1, h2, h3, h4 {
     color: var(--dark);
     font-weight: bold;
-}
+  }
 
-a {
+  a {
     text-decoration: none;
     color: inherit;
-}
+  }
 `;
