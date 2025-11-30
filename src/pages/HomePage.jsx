@@ -1,108 +1,93 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import heroImage from '../assets/hero.jpg';
 
 const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  max-width: 1200px; margin: 0 auto; padding: 0 1rem;
 `;
 
 const HeroSection = styled.div`
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 4rem;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+  display: flex; gap: 2rem; margin-bottom: 4rem; margin-top: 2rem;
+  @media (max-width: 768px) { flex-direction: column; }
 `;
 
 const HeroImage = styled.div`
-  width: 50%;
+  flex: 1;
   height: 320px;
-  background-color: var(--primary-light);
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   
+  /* Стиль для картинки всередині */
   img {
     width: 100%; height: 100%; object-fit: cover;
   }
-  @media (max-width: 768px) { width: 100%; }
 `;
 
 const HeroContent = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
-  h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-  p { font-size: 1.1rem; line-height: 1.6; }
-  @media (max-width: 768px) { width: 100%; }
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--dark); }
+  p { font-size: 1.1rem; line-height: 1.6; color: var(--medium); }
 `;
 
 const TilesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 3rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem;
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
 `;
 
 const Tile = styled.div`
   text-align: center;
-  img {
-    width: 100%; height: 200px; object-fit: cover;
-    border-radius: 8px; margin-bottom: 1rem;
-  }
+  background: #fff; padding: 20px; border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  h3 { margin-bottom: 0.5rem; }
 `;
 
 const Button = styled.button`
-  background-color: var(--primary);
-  color: white;
-  padding: 12px 32px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-  display: block;
-  margin: 0 auto;
+  background-color: var(--primary); color: white; padding: 12px 32px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; display: block; margin: 0 auto;
+  &:hover { background-color: var(--primary-dark); }
+`;
 
-  &:hover {
-    background-color: var(--primary-dark);
-  }
+const ExtraContent = styled.div`
+  margin-top: 3rem; padding: 2rem; background: #e0f2fe; border-radius: 8px; text-align: center;
 `;
 
 const HomePage = () => {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <Container>
       <HeroSection>
         <HeroImage>
-          {/* <img src={heroImage} alt="Hero" /> */}
-          <div style={{width:'100%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center', color: '#2563eb'}}></div>
+          <img src={heroImage} alt="Shop Banner" />
         </HeroImage>
+        
         <HeroContent>
-          <h1>Heading</h1>
-          <p>...</p>
+          <h1>Welcome!</h1>
+          <p>Ми пропонуємо найкращі меблі для вашого комфорту.</p>
         </HeroContent>
       </HeroSection>
 
       <TilesGrid>
         {[1, 2, 3].map(item => (
           <Tile key={item}>
-            <div style={{height: '200px', background: '#dbeafe', borderRadius: '8px', marginBottom: '1rem'}}></div> 
-             {/* <img src={itemImage} alt="Tile" /> */}
-            <h3>{item}</h3>
-            <p>...</p>
+            <h3>Tile {item}</h3>
+            <p>Static content here.</p>
           </Tile>
         ))}
       </TilesGrid>
 
-      <Button>View more</Button>
+      <Button onClick={() => setShowMore(!showMore)}>
+        {showMore ? "Show Less" : "View more"}
+      </Button>
+
+      {showMore && (
+        <ExtraContent>
+          <h2>Extra Content Loaded!</h2>
+          <p>This section appears because you clicked the button.</p>
+        </ExtraContent>
+      )}
     </Container>
   );
 };

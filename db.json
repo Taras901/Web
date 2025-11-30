@@ -1,0 +1,6 @@
+{
+    "items": [
+    { "id": 1, "title": "Chair", "category": "Furniture", "price": 45, "image": "https://via.placeholder.com/150", "description": "Desc..." },
+    { "id": 2, "title": "Lamp", "category": "Lighting", "price": 30, "image": "https://via.placeholder.com/150", "description": "Desc..." }
+    ]
+}
