@@ -5,7 +5,6 @@ import { fetchItems, createItem, updateItem, deleteItem } from '../api';
 
 const Container = styled.div`max-width: 1200px; margin: 0 auto; padding: 0 1rem;`;
 
-// Панель інструментів (Фільтри + Кнопка "Додати")
 const Toolbar = styled.div`
   display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding: 1rem; 
   background-color: var(--light); border-radius: 8px;
