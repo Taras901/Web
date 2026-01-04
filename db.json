@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Awesome Chair",
       "category": "Furniture",
       "price": 45,
@@ -9,7 +9,7 @@
       "image": "/chair.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Cool Table",
       "category": "Furniture",
       "price": 120.5,
@@ -17,7 +17,7 @@
       "image": "/table.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Modern Lamp",
       "category": "Lighting",
       "price": 30,
@@ -25,7 +25,7 @@
       "image": "/lamp.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Soft Sofa",
       "category": "Furniture",
       "price": 299.99,

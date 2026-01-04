@@ -1,17 +1,17 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, INCREASE_QUANTITY, DECREASE_QUANTITY } from './actions';
 
 const initialState = {
-  cart: [] // Початковий стан кошика - порожній масив
+  cart: [] 
 };
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      // Перевіряємо, чи товар вже є в кошику
+
       const existingItem = state.cart.find(item => item.id === action.payload.id);
       
       if (existingItem) {
-        // Якщо є - збільшуємо кількість
+
         return {
           ...state,
           cart: state.cart.map(item =>
@@ -21,7 +21,7 @@ export const cartReducer = (state = initialState, action) => {
           ),
         };
       } else {
-        // Якщо немає - додаємо новий з quantity: 1
+
         return {
           ...state,
           cart: [...state.cart, { ...action.payload, quantity: 1 }],

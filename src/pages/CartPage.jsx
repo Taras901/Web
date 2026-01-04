@@ -20,11 +20,10 @@ const CheckoutButton = styled.button`margin-top: 1rem; padding: 15px 40px; backg
 const EmptyMsg = styled.div`text-align: center; margin-top: 3rem; a { color: var(--primary); font-weight: bold; }`;
 
 const CartPage = () => {
-  // 1. Отримуємо товари з Redux
+
   const cartItems = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
-  // 2. Рахуємо загальну суму
   const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   if (cartItems.length === 0) {

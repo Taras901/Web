@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-// --- STYLES ---
+
 const HeaderWrapper = styled.header`
   background-color: white;
   padding: 1rem 2rem;
@@ -69,12 +69,11 @@ const Badge = styled.span`
   text-align: center;
 `;
 
-// --- COMPONENT ---
+
 const Header = () => {
-  // Дістаємо кошик з Redux
+
   const cartItems = useSelector(state => state.cart);
   
-  // Рахуємо загальну кількість товарів (враховуючи quantity кожного)
   const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (

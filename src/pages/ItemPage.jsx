@@ -3,11 +3,9 @@ import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
 import { itemsData } from '../data';
 
-// 1. Імпортуємо хук і екшн
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/actions';
 
-// ... (твої стилі Container, Wrapper і т.д. залишаються без змін) ...
 const Container = styled.div`max-width: 1200px; margin: 0 auto; padding: 2rem 1rem;`;
 const Wrapper = styled.div`display: flex; gap: 3rem; @media (max-width: 768px) { flex-direction: column; }`;
 const ImageContainer = styled.div`flex: 1; img { width: 100%; border-radius: 8px; }`;
@@ -20,16 +18,16 @@ const Button = styled.button`padding: 12px 24px; background: var(--dark); color:
 const ItemPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // 2. Ініціалізуємо dispatch
+  const dispatch = useDispatch(); 
 
   const item = itemsData.find(product => product.id === parseInt(id));
 
   if (!item) return <Container><h2>Item not found!</h2></Container>;
 
-  // 3. Функція додавання
+
   const handleAddToCart = () => {
-    dispatch(addToCart(item)); // Відправляємо товар в Redux
-    alert(`${item.title} added to cart!`); // Просте повідомлення
+    dispatch(addToCart(item));
+    alert(`${item.title} added to cart!`); 
   };
 
   return (
@@ -47,7 +45,7 @@ const ItemPage = () => {
           <div style={{display:'flex', gap:'10px'}}>
             <Button onClick={() => navigate(-1)} style={{background:'gray'}}>Go back</Button>
             
-            {/* 4. Вішаємо обробник на кнопку */}
+           
             <Button onClick={handleAddToCart}>Add to cart</Button>
           </div>
         </InfoContainer>
